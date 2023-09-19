@@ -33,7 +33,7 @@ if ($_SESSION['ventas']==1) {
       <th>Documento</th>
       <th>Numero</th>
       <th>Telefono</th>
-      <th>Email</th>
+      <th>Correo</th>
     </thead>
     <tbody>
     </tbody>
@@ -43,7 +43,7 @@ if ($_SESSION['ventas']==1) {
       <th>Documento</th>
       <th>Numero</th>
       <th>Telefono</th>
-      <th>Email</th>
+      <th>Correo</th>
     </tfoot>   
   </table>
 </div>
@@ -76,7 +76,7 @@ if ($_SESSION['ventas']==1) {
       <input class="form-control" type="text" name="telefono" id="telefono" maxlength="20" placeholder="Número de Telefono">
     </div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Email</label>
+      <label for="">Correo</label>
       <input class="form-control" type="email" name="email" id="email" maxlength="50" placeholder="Email">
     </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
