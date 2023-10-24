@@ -57,20 +57,20 @@ if (!isset($_SESSION['nombre'])) {
               <div class="panel-body" id="formularioregistros">
                 <form action="" name="formulario" id="formulario" method="POST">
                   <div class="form-group col-lg-8 col-md-8 col-xs-12">
-                    <label for="">Proveedor(*):</label>
+                    <label for="">Laboratorio(*):</label>
                     <input class="form-control" type="hidden" name="idingreso" id="idingreso">
                     <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true" required>
 
                     </select>
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-xs-12">
-                    <label for="">Fecha(*): </label>
-                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" required>
+                    <label for="">Fecha: </label>
+                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" required value="<?php echo date("Y-m-d"); ?>" readonly>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Tipo Comprobante(*): </label>
                     <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
-                      <option value="Boleta">Boleta</option>
+                      <option value="Recibo">Recibo</option>
                       <option value="Factura">Factura</option>
                       <option value="Ticket">Ticket</option>
                     </select>
@@ -89,18 +89,18 @@ if (!isset($_SESSION['nombre'])) {
                   </div>
                   <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <a data-toggle="modal" href="#myModal">
-                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar Articulos</button>
+                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar medicamento</button>
                     </a>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-xs-12">
                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                       <thead style="background-color:#A9D0F5">
                         <th>Opciones</th>
-                        <th>Articulo</th>
+                        <th>Medicamento</th>
                         <th>Stock</th>
                         <th>Cantidad</th>
                         <th>Precio Compra</th>
-                        <th>Precio Venta</th>
+                        <th>Precio Unitario</th>
                         <th>Subtotal</th>
                         <th>Acción</th>
                       </thead>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['nombre'])) {
                         <th>
                           <ul style="list-style:none">
                             <li>Sub Total</li>
-                            <li id="inpuesto_name">Impuesto(13%)</li>
+                            <li id="inpuesto_name">Impuesto(12%)</li>
                             <li>TOTAL</li>
                           </ul>
                         </th>
@@ -121,9 +121,9 @@ if (!isset($_SESSION['nombre'])) {
                         <th></th>
                         <th>
                           <ul style="list-style:none">
-                            <li id="_subtotal">Bs.- 0.00</li>
-                            <li id="_impuesto">Bs.- 0.00</li>
-                            <li id="total">Bs- 0.00</li>
+                            <li id="_subtotal">Bs.-  0.00</li>
+                            <li id="_impuesto">Bs.-  0.00</li>
+                            <li id="total">Bs.-  0.00</li>
                           </ul>
                           <input type="hidden" name="total_compra" id="total_compra">
                         </th>
@@ -153,14 +153,14 @@ if (!isset($_SESSION['nombre'])) {
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title">Seleccione un Articulo</h4>
+            <h4 class="modal-title">Seleccione un medicamento</h4>
           </div>
           <div class="modal-body">
             <table id="tblarticulos" class="table table-striped table-bordered table-condensed table-hover">
               <thead>
                 <th>Opciones</th>
                 <th>Nombre</th>
-                <th>Categoria</th>
+                <th>Laboratorio</th>
                 <th>Código</th>
                 <th>Stock</th>
                 <th>Imagen</th>
@@ -171,7 +171,7 @@ if (!isset($_SESSION['nombre'])) {
               <tfoot>
                 <th>Opciones</th>
                 <th>Nombre</th>
-                <th>Categoria</th>
+                <th>Laboratorio</th>
                 <th>Código</th>
                 <th>Stock</th>
                 <th>Imagen</th>

@@ -33,7 +33,7 @@ if ($_SESSION['ventas']==1) {
       <th>Documento</th>
       <th>Numero</th>
       <th>Telefono</th>
-      <th>Correo</th>
+      <th>Email</th>
     </thead>
     <tbody>
     </tbody>
@@ -43,7 +43,7 @@ if ($_SESSION['ventas']==1) {
       <th>Documento</th>
       <th>Numero</th>
       <th>Telefono</th>
-      <th>Correo</th>
+      <th>Email</th>
     </tfoot>   
   </table>
 </div>
@@ -58,9 +58,9 @@ if ($_SESSION['ventas']==1) {
      <div class="form-group col-lg-6 col-md-6 col-xs-12">
       <label for="">Tipo Dcumento</label>
      <select class="form-control select-picker" name="tipo_documento" id="tipo_documento" required>
-       <option value="DNI">CI</option>
-       <option value="RUC">RUN</option>
-       <option value="CEDULA">LICENCIA</option>
+       <option value="CI">CI</option>
+       <option value="LICENCIA">LICENIA</option>
+       <option value="PASAPORTE">PASAPORTE</option>
      </select>
     </div>
      <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -76,7 +76,7 @@ if ($_SESSION['ventas']==1) {
       <input class="form-control" type="text" name="telefono" id="telefono" maxlength="20" placeholder="Número de Telefono">
     </div>
         <div class="form-group col-lg-6 col-md-6 col-xs-12">
-      <label for="">Correo</label>
+      <label for="">Email</label>
       <input class="form-control" type="email" name="email" id="email" maxlength="50" placeholder="Email">
     </div>
     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

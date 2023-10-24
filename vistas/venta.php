@@ -64,17 +64,19 @@ if (!isset($_SESSION['nombre'])) {
                     </select>
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-xs-12">
-                    <label for="">Fecha(*): </label>
-                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" required>
+                    <label for="">Fecha: </label>
+                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" readonly>
                   </div>
+                  <!--
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                    <label for="">Tipo Comprobante(*): </label>
+                    <label for="">Tipo Comprobante: </label>
                     <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
                       <option value="Boleta">Boleta</option>
                       <option value="Factura">Factura</option>
                       <option value="Ticket">Ticket</option>
                     </select>
                   </div>
+                  
                   <div class="form-group col-lg-3 col-md-2 col-xs-6">
                     <label for="">Serie: </label>
                     <input class="form-control" type="text" name="serie_comprobante" id="serie_comprobante" maxlength="7" placeholder="Serie">
@@ -87,7 +89,10 @@ if (!isset($_SESSION['nombre'])) {
                     <label for="">Impuesto: </label>
                     <input class="form-control" type="text" name="impuesto" id="impuesto">
                   </div>
-                  <div class="form-group col-lg-3 col-md-2 col-xs-6">
+                   -->
+                   <br>
+                   <br><br><br><br>
+                  <div class="form-group col-lg-3 col-md-8 col-xs-12">
                     <label for="">Tipo de pago: </label>
                     <select name="tipo_pago" id="tipo_pago" onchange="verocultar();" class="form-control selectpicker" required>
                       <option value="Efectivo">Efectivo</option>
@@ -103,14 +108,14 @@ if (!isset($_SESSION['nombre'])) {
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <a data-toggle="modal" href="#myModal">
-                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar Articulos</button>
+                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar Medicamentos</button>
                     </a>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-xs-12">
                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                       <thead style="background-color:#A9D0F5">
                         <th>Opciones</th>
-                        <th>Articulo</th>
+                        <th>Medicamento</th>
                         <th>Stock</th>
                         <th>Cantidad</th>
                         <th>Precio Venta</th>
@@ -125,7 +130,7 @@ if (!isset($_SESSION['nombre'])) {
                         <th>
                           <ul style="list-style:none">
                             <li>Sub Total</li>
-                            <li id="inpuesto_name">Impuesto(18%)</li>
+                            <!--<li id="inpuesto_name">Impuesto(12%)</li>-->
                             <li>TOTAL</li>
                           </ul>
                         </th>
@@ -137,7 +142,7 @@ if (!isset($_SESSION['nombre'])) {
                         <th>
                           <ul style="list-style:none">
                             <li id="_subtotal">Bs.- 0.00</li>
-                            <li id="_impuesto">Bs.- 0.00</li>
+                            <!--<li id="_impuesto">Bs.- 0.00</li>-->
                             <li id="total">Bs.- 0.00</li>
                           </ul>
                           <input type="hidden" name="total_venta" id="total_venta">
@@ -147,7 +152,7 @@ if (!isset($_SESSION['nombre'])) {
                     </table>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+                    <button class="btn btn-primary" onclick="mantener()" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
                     <button class="btn btn-danger" onclick="cancelarform()" type="button" id="btnCancelar"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                   </div>
                 </form>

@@ -8,7 +8,7 @@ if (strlen(session_id())<1)
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Farmacia "Sit Lux"</title>
+  <title>sistema web ventas</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -28,17 +28,20 @@ if (strlen(session_id())<1)
 <link rel="stylesheet" href="../public/datatables/responsive.dataTables.min.css">
 <link rel="stylesheet" href="../public/css/bootstrap-select.min.css">
 
+<link rel="stylesheet" href="../public/css/fondo.css">
+
+
 </head>
-<body class="hold-transition skin-purple sidebar-mini">
+<body class="hold-transition  login-page" style="background-color:#cfdce7;background-image: url('fondo.jpg'); background-size: cover;">
 <div class="wrapper">
 
   <header class="main-header">
     <!-- Logo -->
     <a href="escritorio.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>FARMACIA</b> VENTAS </span>
+      <span class="logo-mini"><b>FARMACIA</b> SITLUX </span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>FARMACIA</b> VENTAS</span>
+      <span class="logo-lg"><b>FARMACIA</b> SIT LUX</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -57,11 +60,11 @@ if (strlen(session_id())<1)
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
+              <li class="user-header" style="background-color:#e09ac1">
                 <img src="../files/usuarios/<?php echo $_SESSION['imagen']; ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  FARMACIA SIT LUX
+                  Bienvenidos
                   <small> </small>
                 </p>
               </li>
@@ -82,7 +85,7 @@ if (strlen(session_id())<1)
       </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
+  <!-- Left side column. contains the logo and  -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -95,7 +98,7 @@ if (strlen(session_id())<1)
 <br>
        <?php 
 if ($_SESSION['escritorio']==1) {
-  echo ' <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>PANEL</span></a>
+  echo ' <li><a href="escritorio.php"><i class="fa  fa-dashboard (alias)"></i> <span>PRINCIPAL</span></a>
         </li>';
 }
         ?>
@@ -109,8 +112,8 @@ if ($_SESSION['almacen']==1) {
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Articulos</a></li>
-            <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorias</a></li>
+            <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Medicamentos </a></li>
+            <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Laboratorio</a></li>
           </ul>
         </li>';
 }
@@ -119,14 +122,14 @@ if ($_SESSION['almacen']==1) {
 if ($_SESSION['compras']==1) {
   echo ' <li class="treeview">
           <a href="#">
-            <i class="fa fa-th"></i> <span>COMPRAS</span>
+            <i class="fa fa-th"></i> <span>PEDIDOS</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-            <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+            <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Laboratorios</a></li>
           </ul>
         </li>';
 }
@@ -142,8 +145,8 @@ if ($_SESSION['ventas']==1) {
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="venta.php"><i class="fa fa-circle-o"></i> ventas</a></li>
-            <li><a href="cliente.php"><i class="fa fa-circle-o"></i> clientes</a></li>
+            <li><a href="venta.php"><i class="fa fa-circle-o"></i> Ventas</a></li>
+            <li><a href="cliente.php"><i class="fa fa-circle-o"></i> Clientes</a></li>
           </ul>
         </li>';
 }

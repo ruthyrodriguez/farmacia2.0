@@ -2,7 +2,7 @@
     <div class="pull-right hidden-xs">
       <b> </b> 
     </div>
-    <strong>RUTH RODRIGUEZ</strong> 
+    <strong>Ruth Rodriguez</strong> 
   </footer>
 
 <!-- jQuery 3 -->

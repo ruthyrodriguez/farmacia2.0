@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group col-lg-6 col-md-6 col-xs-12">
                         <label for="">Tipo Documento</label>
                         <select class="form-control select-picker" name="tipo_documento" id="tipo_documento" required>
-                            <option value="DNI">CI</option>
-                            <option value="RUC">RUN</option>
-                            <option value="CEDULA">LICENCIA</option>
+                            <option value="CI">CI</option>
+                            <option value="LICENCIA">LICENCIA</option>
+                            <option value="PASAPORTE">PASAPORTE</option>
                         </select>
                     </div>
                     <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -75,8 +75,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
-                    Guardar</button>
+                
+                <button type="submit" onclick="formulario" class="btn btn-primary"><i class="fa fa-save"></i>Guardar</button>
+
+
+                <!--<button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>
+                    Guardar</button>-->
+
                 <button class="btn btn-default" type="button" data-dismiss="modal">Cerrar</button>
             </div>
             </form>
