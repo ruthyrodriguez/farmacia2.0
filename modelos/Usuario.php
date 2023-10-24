@@ -9,7 +9,7 @@ public function __construct(){
 
 }
 
-//metodo insertar regiustro
+//metodo insertar regisstro
 public function insertar($nombre,$apellidop,$apellidom,$tipo_documento,$num_documento,$direccion,$telefono,$email,$cargo,$login,$clave,$imagen,$permisos){
 	$sql="INSERT INTO usuario (nombre,apellidop,apellidom,tipo_documento,num_documento,direccion,telefono,email,cargo,login,clave,imagen,condicion) VALUES ('$nombre','$apellidop','$apellidom','$tipo_documento','$num_documento','$direccion','$telefono','$email','$cargo','$login','$clave','$imagen','1')";
 	//return ejecutarConsulta($sql);

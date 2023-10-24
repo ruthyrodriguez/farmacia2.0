@@ -39,9 +39,27 @@ public function totalproveedores(){
 	return ejecutarConsulta($sql);
 }
 public function articulostockmin(){
-	$sql = "SELECT * FROM articulo WHERE stock < 6 and condicion=1";
+	$sql = "SELECT * FROM articulo WHERE stock < 11 and condicion=1";
 	return ejecutarConsulta($sql);
 }
+
+
+public function articulosvencer() {
+
+	date_default_timezone_set('America/lima');
+    $fechaActual = date('Y-m-d');
+    
+
+    $fechaUnMesAntes = date('Y-m-d', strtotime('-1 month', strtotime($fechaActual)));
+
+    $sql = "SELECT * FROM articulo WHERE condicion = 1 AND DATEDIFF(fechavence, '$fechaActual') <= 30 AND DATEDIFF(fechavence, '$fechaActual') > 0";
+
+    return ejecutarConsulta($sql);
+}
+
+
+
+
 public function Articulos_mas_vendidos(){ 
 	$sql = "SELECT articulo.*, SUM(detalle_venta.cantidad) as cantidad,  SUM(detalle_venta.precio_venta) as venta_precio
 			FROM detalle_venta JOIN articulo ON detalle_venta.idarticulo = articulo.idarticulo
