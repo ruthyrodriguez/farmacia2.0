@@ -46,7 +46,7 @@ if ($_SESSION['almacen']==1) {
                             <tfoot>
                                 <th>Opciones</th>
                                 <th>Nombre</th>
-                                <th>Categoria</th>
+                                <th>Laboratorio</th>
                                 <th>Codigo</th>
                                 <th>Stock</th>
                                 <th>Imagen</th>
