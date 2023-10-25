@@ -64,19 +64,17 @@ if (!isset($_SESSION['nombre'])) {
                     </select>
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-xs-12">
-                    <label for="">Fecha: </label>
-                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" readonly>
+                    <label for="">Fecha(*): </label>
+                    <input class="form-control" type="date" name="fecha_hora" id="fecha_hora" readonly required>
                   </div>
-                  <!--
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                    <label for="">Tipo Comprobante: </label>
+                    <label for="">Tipo Comprobante(*): </label>
                     <select name="tipo_comprobante" id="tipo_comprobante" class="form-control selectpicker" required>
                       <option value="Boleta">Boleta</option>
                       <option value="Factura">Factura</option>
                       <option value="Ticket">Ticket</option>
                     </select>
                   </div>
-                  
                   <div class="form-group col-lg-3 col-md-2 col-xs-6">
                     <label for="">Serie: </label>
                     <input class="form-control" type="text" name="serie_comprobante" id="serie_comprobante" maxlength="7" placeholder="Serie">
@@ -89,10 +87,7 @@ if (!isset($_SESSION['nombre'])) {
                     <label for="">Impuesto: </label>
                     <input class="form-control" type="text" name="impuesto" id="impuesto">
                   </div>
-                   -->
-                   <br>
-                   <br><br><br><br>
-                  <div class="form-group col-lg-3 col-md-8 col-xs-12">
+                  <div class="form-group col-lg-3 col-md-2 col-xs-6">
                     <label for="">Tipo de pago: </label>
                     <select name="tipo_pago" id="tipo_pago" onchange="verocultar();" class="form-control selectpicker" required>
                       <option value="Efectivo">Efectivo</option>
@@ -108,14 +103,14 @@ if (!isset($_SESSION['nombre'])) {
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <a data-toggle="modal" href="#myModal">
-                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar Medicamentos</button>
+                      <button id="btnAgregarArt" type="button" class="btn btn-primary"><span class="fa fa-plus"></span>Agregar Articulos</button>
                     </a>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-xs-12">
                     <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                       <thead style="background-color:#A9D0F5">
                         <th>Opciones</th>
-                        <th>Medicamento</th>
+                        <th>Articulo</th>
                         <th>Stock</th>
                         <th>Cantidad</th>
                         <th>Precio Venta</th>
@@ -130,7 +125,7 @@ if (!isset($_SESSION['nombre'])) {
                         <th>
                           <ul style="list-style:none">
                             <li>Sub Total</li>
-                            <!--<li id="inpuesto_name">Impuesto(12%)</li>-->
+                            <li id="inpuesto_name">Impuesto(18%)</li>
                             <li>TOTAL</li>
                           </ul>
                         </th>
@@ -141,9 +136,9 @@ if (!isset($_SESSION['nombre'])) {
                         <th></th>
                         <th>
                           <ul style="list-style:none">
-                            <li id="_subtotal">Bs.- 0.00</li>
-                            <!--<li id="_impuesto">Bs.- 0.00</li>-->
-                            <li id="total">Bs.- 0.00</li>
+                            <li id="_subtotal">S/. 0.00</li>
+                            <li id="_impuesto">S/. 0.00</li>
+                            <li id="total">S/. 0.00</li>
                           </ul>
                           <input type="hidden" name="total_venta" id="total_venta">
                         </th>
@@ -152,7 +147,7 @@ if (!isset($_SESSION['nombre'])) {
                     </table>
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary" onclick="mantener()" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
                     <button class="btn btn-danger" onclick="cancelarform()" type="button" id="btnCancelar"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                   </div>
                 </form>
@@ -212,8 +207,87 @@ if (!isset($_SESSION['nombre'])) {
   require 'footer.php';
   ?>
   <script src="scripts/venta.js"></script>
+
+
+
+
+<!--Subtotales automaticos-->
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("input", function (e) {
+    if (e.target.matches("input[name='cantidad[]'], input[name='precio_venta[]'], input[name='descuento[]']")) {
+      var fila = e.target.closest("tr");
+      var cantidad = parseFloat(fila.querySelector("input[name='cantidad[]']").value);
+      var precioVenta = parseFloat(fila.querySelector("input[name='precio_venta[]']").value);
+      var descuento = parseFloat(fila.querySelector("input[name='descuento[]']").value);
+      var stock = parseInt(fila.querySelector("input[name='stock[]']").value);
+
+      // Verificar si la cantidad supera el stock disponible
+      if (cantidad > stock) {
+        alert("Stock insuficiente");
+        // Restablecer la cantidad al stock disponible
+        fila.querySelector("input[name='cantidad[]']").value = stock;
+        cantidad = stock; // Actualizar la cantidad con el valor corregido
+      }
+
+      // Calcular el subtotal
+      var subtotal = (cantidad * precioVenta) - descuento;
+
+      // Verificar si no se ha seleccionado ningún producto
+      if (isNaN(subtotal)) {
+        subtotal = 0;
+      }
+
+      fila.querySelector("span[name='subtotal']").textContent = subtotal.toFixed(2);
+      fila.querySelector("input[name='subar[]']").value = subtotal.toFixed(2);
+      calcularTotales();
+    }
+  });
+});
+</script>
+
+
+
+<!--RECARGAR EL FORMULARIO VENTA-->
+<script>
+  $(document).ready(function() {
+    $("#formularioCliente").submit(function(e) {
+        e.preventDefault(); 
+
+        $.ajax({
+            url: "nuevocliente.php", 
+            type: "POST",
+            data: $(this).serialize(), 
+            success: function(response) {
+                
+                $("#resultadoRegistro").html(response);
+                
+                if (response.includes("éxito")) {
+                    var clientName = $("#nombre").val();
+                    $("#idcliente").append("<option value='" + clientName + "' selected>" + clientName + "</option>");
+                    $("#modalcliente").modal("hide");
+
+                    // Redirige a la vista de ventas
+                    window.location.href = '#formularioregistros';
+                    
+                }
+            },
+            error: function() {
+                
+            }
+        });
+    });
+});
+
+</script>
+
+
+
+
 <?php
 }
+
 
 ob_end_flush();
 ?>
