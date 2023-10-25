@@ -22,6 +22,11 @@ $pdf->AddPage();
 //seteamos el inicio del margen superior en 25 pixeles
 $y_axis_initial=25;
 
+//agregamos la imagen logo.png
+$pdf->Image('logo.png',15,8,10,10);
+$pdf->Image('login1.jpeg',180,8,15,10);
+
+	
 //seteamos el tipo de letra y creamos el titulo de la pagina. No se repetira como encabezado
 $pdf->SetFont('Arial','B',12);
 
@@ -30,7 +35,7 @@ $pdf->Cell(100,6,'LISTA DE ARTICULOS',1,0,'C');
 $pdf->Ln(10);
 
 //creamos las celdas para los titulos de cada columna y le asignamos un fondo gris y el tipo de letra
-$pdf->SetFillColor(232,232,232);
+$pdf->SetFillColor(255, 192, 203);
 $pdf->SetFont('Arial','B',10);
 $pdf->Cell(58,6,'Nombre',1,0,'C',1);
 $pdf->Cell(50,6,utf8_decode('Categoría'),1,0,'C',1);
