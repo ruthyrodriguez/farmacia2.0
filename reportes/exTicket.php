@@ -5,7 +5,7 @@ if (strlen(session_id())<1)
   session_start();
 
 if (!isset($_SESSION['nombre'])) {
-  echo "debe ingresar al sistema correctamente para vosualizar el reporte";
+  echo "Ingrese al sistema correctamente para visualizar el reporte";
 }else{
 
 if ($_SESSION['ventas']==1) {
@@ -30,11 +30,11 @@ $rspta = $venta->ventacabecera($_GET["id"]);
 $reg=$rspta->fetch_object();
 
 //establecemos los datos de la empresa
-$empresa = "Tarea Completo S.A.C.";
-$documento = "76754576";
-$direccion = "Av. tarea completo";
-$telefono = "927564564";
-$email = "tareacompleto@gmail.com";
+$empresa = "Farmacia Sit Lux";
+$documento = "77445566";
+$direccion = "Calle 10 de noviembre";
+$telefono = "4455667";
+$email = "farmaciasitlux@gmail.com";
 	 ?>
 <div class="zona_impresion">
 	<!--codigo imprimir-->
