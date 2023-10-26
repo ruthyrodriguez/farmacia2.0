@@ -248,30 +248,7 @@ if (!isset($_SESSION['nombre'])) {
                             </div>
                         </div>
                     </div>
-                    <!--
-                    <div class="panel-body">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    Compras de los ultimos 10 dias
-                                </div>
-                                <div class="box-body">
-                                    <canvas id="compras" width="400" height="300"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    Ventas de los ultimos 12 meses
-                                </div>
-                                <div class="box-body">
-                                    <canvas id="ventas" width="400" height="300"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                                                    -->
+                   
                 </div>
             </div>
         </div>
