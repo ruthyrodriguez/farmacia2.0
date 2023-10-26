@@ -105,7 +105,7 @@ $pdf->addCadreEurosFrancs("IGV"." $regv->impuesto %");
 $pdf->Output('Reporte de Venta' ,'I');
 
 	}else{
-echo "No tiene permiso para visualizar el reporte";
+echo "No puede visualizar el reporte";
 }
 
 }
