@@ -278,6 +278,17 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+     // Escuchamos el evento keyup del elemento #nombre
+    $("#nombre").on("keyup", function() {
+        
+        // Obtenemos el valor del input
+        var nombre = $(this).val();
+        
+        // Cargamos el contenido de la lista de clientes
+        $("#listaClientes").load("listaclientes.php", {
+            "cliente": nombre
+        });
+    });
 });
 
 </script>
